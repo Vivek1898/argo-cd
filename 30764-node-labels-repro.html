@@ -1,0 +1,57 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>argo-cd #30764 label row, reduced</title>
+<style>
+body{font-family:Heebo,"Helvetica Neue",Arial,sans-serif;font-size:14px;background:#f5f7f9;color:#495763;margin:0;padding:30px}
+h3{font-size:13px;margin:0 0 30px 0;font-weight:normal}
+.wrap{position:relative;height:110px;width:420px}
+.application-resource-tree{position:relative}
+.application-resource-tree__node{position:absolute;padding-left:3.5em;padding-right:1em;margin:10px;box-shadow:1px 1px 1px #CCD6DD;background:#fff;color:#363c4a;border-radius:4px;border:1px solid transparent;cursor:pointer;left:0;top:0;width:282px;height:52px;box-sizing:border-box}
+.application-resource-tree__node-kind-icon{position:absolute;left:-20px;top:-8px;width:60px;height:60px;border-radius:50%;background:#CCD6DD;border:4px solid #fff;box-sizing:border-box;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:16px;color:#fff}
+.application-resource-tree__node-content{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:10px 20px 10px 10px;line-height:.95;display:flex;flex-direction:column;justify-content:center;height:100%;box-sizing:border-box}
+.application-resource-tree__node-title{font-size:.8em;padding-bottom:5px;overflow:hidden;text-overflow:ellipsis;text-align:left}
+.application-resource-tree__node-label{background-color:#CCD6DD;color:#495763;border:1px solid #8FA4B1;border-radius:5px;padding:0 5px;font-size:.6em;text-transform:lowercase;margin-right:1px}
+.application-resource-tree__node-label--appset{background-color:#DFF6F9;color:#006F8A;border-color:#1FBDD0;cursor:pointer;text-transform:none}
+/* before: master */
+.before .application-resource-tree__node-labels{position:absolute;bottom:-14px;right:0}
+/* after: this PR */
+.after .application-resource-tree__node-labels{position:absolute;bottom:-14px;right:0;max-width:100%;display:flex;align-items:baseline;white-space:nowrap}
+.after .application-resource-tree__node-labels>*{flex-shrink:0}
+.after .application-resource-tree__node-label--appset{flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+</style></head><body>
+<div class="application-resource-tree">
+<h3>master (bottom: -14px; right: 0; wrapping allowed)</h3>
+<div class="wrap before">
+ <div class="application-resource-tree__node application-resource-tree__node--application">
+  <div class="application-resource-tree__node-kind-icon">App</div>
+  <div class="application-resource-tree__node-content"><span class="application-resource-tree__node-title" title="acme-logistics-warehouse-inventory-reconciliation-worker-qa">acme-logistics-warehouse-inventory-reconciliation-worker-qa</span></div>
+  <div class="application-resource-tree__node-labels">
+   <a class="application-resource-tree__node-label application-resource-tree__node-label--appset" title="Managed by ApplicationSet: acme-logistics-warehouse-inventory-reconciliation-worker">acme-logistics-warehouse-inventory-reconciliation-worker</a>
+   <span title="Application was created 8 months ago"><span class="application-resource-tree__node-label">8 months</span></span>
+   <span class="application-resource-tree__node-label" title="Parameter overrides: 2 parameter override(s)">2 parameter override(s)</span>
+  </div>
+ </div>
+</div>
+<h3>this PR (row kept on one line, ApplicationSet tag truncates)</h3>
+<div class="wrap after">
+ <div class="application-resource-tree__node application-resource-tree__node--application">
+  <div class="application-resource-tree__node-kind-icon">App</div>
+  <div class="application-resource-tree__node-content"><span class="application-resource-tree__node-title" title="acme-logistics-warehouse-inventory-reconciliation-worker-qa">acme-logistics-warehouse-inventory-reconciliation-worker-qa</span></div>
+  <div class="application-resource-tree__node-labels">
+   <a class="application-resource-tree__node-label application-resource-tree__node-label--appset" title="Managed by ApplicationSet: acme-logistics-warehouse-inventory-reconciliation-worker">acme-logistics-warehouse-inventory-reconciliation-worker</a>
+   <span title="Application was created 8 months ago"><span class="application-resource-tree__node-label">8 months</span></span>
+   <span class="application-resource-tree__node-label" title="Parameter overrides: 2 parameter override(s)">2 parameter override(s)</span>
+  </div>
+ </div>
+</div>
+<h3>this PR, short ApplicationSet name (unchanged look)</h3>
+<div class="wrap after">
+ <div class="application-resource-tree__node application-resource-tree__node--application">
+  <div class="application-resource-tree__node-kind-icon">App</div>
+  <div class="application-resource-tree__node-content"><span class="application-resource-tree__node-title">guestbook</span></div>
+  <div class="application-resource-tree__node-labels">
+   <a class="application-resource-tree__node-label application-resource-tree__node-label--appset" title="Managed by ApplicationSet: guestbook-set">guestbook-set</a>
+   <span title="Application was created 8 months ago"><span class="application-resource-tree__node-label">8 months</span></span>
+   <span class="application-resource-tree__node-label">2 parameter override(s)</span>
+  </div>
+ </div>
+</div>
+</div></body></html>
