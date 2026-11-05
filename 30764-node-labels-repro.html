@@ -14,8 +14,9 @@ h3{font-size:13px;margin:0 0 30px 0;font-weight:normal}
 .before .application-resource-tree__node-labels{position:absolute;bottom:-14px;right:0}
 /* after: this PR */
 .after .application-resource-tree__node-labels{position:absolute;bottom:-14px;right:0;max-width:100%;display:flex;align-items:baseline;white-space:nowrap}
-.after .application-resource-tree__node-labels>*{flex-shrink:0}
-.after .application-resource-tree__node-label--appset{flex-shrink:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.after .application-resource-tree__node-labels>*{min-width:8ch;flex-shrink:1;overflow:hidden;text-overflow:ellipsis}
+.after .application-resource-tree__node-labels>span[title*=' was created ']{min-width:0;flex-shrink:0}
+.after .application-resource-tree__node-label--appset{flex-shrink:4}
 </style></head><body>
 <div class="application-resource-tree">
 <h3>master (bottom: -14px; right: 0; wrapping allowed)</h3>
@@ -51,6 +52,18 @@ h3{font-size:13px;margin:0 0 30px 0;font-weight:normal}
    <a class="application-resource-tree__node-label application-resource-tree__node-label--appset" title="Managed by ApplicationSet: guestbook-set">guestbook-set</a>
    <span title="Application was created 8 months ago"><span class="application-resource-tree__node-label">8 months</span></span>
    <span class="application-resource-tree__node-label">2 parameter override(s)</span>
+  </div>
+ </div>
+</div>
+<h3>this PR, long info tag (ReplicaSet-style) with a short ApplicationSet name</h3>
+<div class="wrap after">
+ <div class="application-resource-tree__node application-resource-tree__node--application">
+  <div class="application-resource-tree__node-kind-icon">App</div>
+  <div class="application-resource-tree__node-content"><span class="application-resource-tree__node-title">guestbook</span></div>
+  <div class="application-resource-tree__node-labels">
+   <a class="application-resource-tree__node-label application-resource-tree__node-label--appset" title="Managed by ApplicationSet: guestbook-set">guestbook-set</a>
+   <span title="Application was created 8 months ago"><span class="application-resource-tree__node-label">8 months</span></span>
+   <span class="application-resource-tree__node-label" title="a very long informational tag value that would otherwise overflow the card">a very long informational tag value that would otherwise overflow the card</span>
   </div>
  </div>
 </div>
